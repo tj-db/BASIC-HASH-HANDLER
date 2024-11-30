@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Listener Example</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 10px;
+            max-width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            background-color: #004089;
+            transform: translateY(0);
+        }
+
+        .example-url {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #4caf50;
+            font-family: monospace;
+            word-break: break-word;
+            padding: 0 15px;
+            max-width: 100%;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .note, .example-code {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-top: 20px;
+            max-width: 90%;
+            text-align: left;
+            white-space: pre-wrap;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+        }
+
+        .note {
+            border: 1px solid #555;
+        }
+
+        .example-code {
+            border: 1px solid #444;
+            font-family: monospace;
+            background-color: #1e1e1e;
+        }
+    </style>
+    <script>
+        function redirectToHash() {
+            const hash = window.location.hash.substring(1);
+
+            try {
+                const url = new URL(hash);
+                window.location.href = url.href;
+            } catch (error) {
+                alert('No valid URL found after the hash!');
+            }
+        }
+
+        function reloadWithExampleURL() {
+            const exampleURL = 'https://framellarchive.github.io/BASIC-HASH-HANDLER/#https://www.youtube.com';
+            window.location.href = exampleURL;
+        }
+    </script>
+</head>
+<body>
+    <h1>Hash Listener Example</h1>
+    <p>Click the button below to be redirected to the address found after the hash in the URL.</p>
+    <button onclick="redirectToHash()">Go to URL</button>
+
+    <div class="example-url">
+        https://framellarchive.github.io/BASIC-HASH-HANDLER/#https://www.youtube.com
+    </div>
+
+    <button onclick="reloadWithExampleURL()">Reload with Example URL</button>
+    
+    <div class="note">
+Note: <br><br>You don't need a button to forward to the hash. <br><br>You can use an active event listener to handle hash changes automatically.<br>
+"window.addEventListener('hashchange', redirectToHash);"<br>
+or just call it directly with<br>
+"redirectToHash();"
+
+    </div>
+    
+    <div class="example-code">
+function redirectToHash() {
+
+    const hash = window.location.hash.substring(1);
+
+            try {
+                const url = new URL(hash);
+                window.location.href = url.href;
+            } catch (error) {
+                console.log('No valid URL found.');
+            }
+        }
+
+window.addEventListener('hashchange', redirectToHash);
+    </div>
+</body>
+</html>
